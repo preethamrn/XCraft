@@ -2,7 +2,7 @@
 #include <string>   //FOR GETTING THE FILE NAMES
 #include <stdlib.h> //FOR RANDOMIZER IN AI
 #include <time.h>   //FOR RANDOMIZER IN AI
-#include <fstream>  //EVENTUALLY FOR POWERUPS AND STORING SCORE DATA ETC...
+#include <fstream>  //FOR POWERUPS AND STORING SCORE DATA ETC...
 
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 720;
@@ -83,7 +83,7 @@ bool init()
     return true;
 }
 
-class Craft //ADD FUNCTION FOR GENERATING NEW BLOCKS AND LINK WITH RENDER_TILES. ALSO HAVE POWERUP FEATURES
+class Craft
 {
     public:
     int xVel, yVel, tx, ty, x, y, ticker, second, power_shooter, power_blast, a[10][16];
@@ -216,7 +216,7 @@ void Craft::render_tiles()
             if (a[i][j]==1) {
                 apply_surface(80*j,80*(i-1)+y,player,screen,&block);
             } else if (a[i][j]==0) {
-                apply_surface(80*j,80*(i-1)+y,player,screen,&blank);  //MAYBE ADD FEATURE THAT WILL CLEAR ALL BLOCKS AFTER DEATH SO THAT CRAFT WILL LEAVE PATH BEHIND IT
+                apply_surface(80*j,80*(i-1)+y,player,screen,&blank);  
             }
         }
     }
@@ -226,7 +226,7 @@ void Craft::render_tiles()
     apply_surface(x,SCREEN_HEIGHT-80,player,screen,&plane);
 }
 
-void Craft::handle_input() //FIX GLITCH WHERE PRESSING ANY OTHER KEY WHILE MOVING STOPS PLANE (MULTI-THREAD? OR GIVE THE MOVEMENT MEMORY TO GO BACK TO ORIGINAL STATE OR MOVEMENT AFTER KEY IS PRESSED.)
+void Craft::handle_input()
 {
     if( event.type == SDL_KEYDOWN )
     {
